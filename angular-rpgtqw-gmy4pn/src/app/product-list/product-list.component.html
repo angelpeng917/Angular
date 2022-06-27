@@ -1,0 +1,30 @@
+<h2>Products</h2>
+
+<div *ngFor="let product of products">  <!--使用 *ngFor，會把這個 <div> 針對列表中的每個產品進行復寫-->
+  <h3>
+    <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]"> <!--懸停在產品名稱上，可以檢視所繫結的 name 屬性值-->
+    {{ product.name }}   <!--插值 {{ }} 可以讓你把屬性值渲染為文字-->
+  </a>
+</h3>
+
+<p *ngIf="product.description">
+  Description: {{ product.description }}
+</p>
+
+<button (click)="share()"> <!--繫結到 product-list.component.ts 中的 share()-->
+  Share
+</button>
+
+<app-product-alerts       
+  [product]="product"
+  (notify)="onNotify()">  <!--將資料傳遞到父元件；-->
+</app-product-alerts>
+
+</div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
